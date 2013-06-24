@@ -1,4 +1,4 @@
-picoemr
-=======
+picopacs
+========
 
-Barebones simple DICOM/RTPConnect/HL7 compliant EMR server.
+Barebones simple DICOM compliant PACS server.
