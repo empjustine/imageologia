@@ -71,7 +71,7 @@ get '/dicom/:cryptographic_hash' do
   }
 end
 
-get '/dicom/:cryptographic_hash/:cryptographic_hash' do
+get '/dicom/:cryptographic_hash/file/:file' do
   file = cryptographic_hashes.select { |filename, cryptographic_hash|
     cryptographic_hash == params[:cryptographic_hash]
   }
