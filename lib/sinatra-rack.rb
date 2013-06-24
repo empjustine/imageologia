@@ -15,7 +15,7 @@ puts "SINATRA_ROOT => #{SINATRA_ROOT}"
 set :root, SINATRA_ROOT
 
 set :bind, '0.0.0.0'
-
+set :port, 9393
 
 # Rack
 # ====

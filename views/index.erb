@@ -25,6 +25,11 @@
 
       <hr>
 
+      <h2>Current external IP address</h2>
+      <h3><%= `ip addr`.each_line.map { |line| line[/inet (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\//, 1] }.compact.join(', ') %></h3>
+
+      <hr>
+
       <h2>DICOM, HL7, IHE, RTPConnect</h2>
       <p><a href="http://www.ijri.org/article.asp?issn=0971-3026;year=2007;volume=17;issue=2;spage=66;epage=68;aulast=Indrajit">Indrajit I K, Verma B S. DICOM, HL7 and IHE: A basic primer on Healthcare Standards for Radiologists. Indian J Radiol Imaging 2007;17:66-8</a>
       <br>

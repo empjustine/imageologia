@@ -5,12 +5,15 @@ require 'dicom'
 # DICOM Client
 # ============
 
-dicom_node = DICOM::DClient.new('0.0.0.0', 4030)
 
-examination = ARGV[0]
+host = ARGV[0]
+examination = ARGV[1]
 if ARGV[0][/dicom_client\.rb/]
-  examination = ARGV[2]
+  host = ARGV[2]
+  examination = ARGV[3]
 end
+
+dicom_node = DICOM::DClient.new(host, 11112)
 
 dicom_node.test
 
