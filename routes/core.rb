@@ -8,6 +8,12 @@ require './routes/dicom'
 get '/' do
   erb :index, :locals => {
     :title  => 'Index',
-    :bootstrap => {:navbar => true},
+    :navbar => {
+      :links => {
+        'Start' => '/',
+        'DICOM Listing' => '/dicom',
+      },
+      :active => 'Start',
+    },
   }
 end

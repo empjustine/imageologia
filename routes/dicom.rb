@@ -30,11 +30,11 @@ DICOM_CATEGORIES = [
 
 get '/dicom' do
 
-  examinations = cryptographic_hashes.map { |filename, cryptographic_hash|
+  examinations = cryptographic_hashes(:refresh => params['refresh']).map { |filename, cryptographic_hash|
     examination = extract_dicom(filename)
     if examination
       data = examination.to_hash
-      data[:data_uri] = data_uri(examination)
+      data[:data_uri] = data_uri(cryptographic_hash, :thumbnails => true)
       
       [data, cryptographic_hash]
     end
@@ -42,7 +42,13 @@ get '/dicom' do
 
   erb :dicom_index, :locals => {
     :title  => 'DICOM Listing',
-    :bootstrap => {:navbar => true},
+    :navbar => {
+      :links => {
+        'Start' => '/',
+        'DICOM Listing' => '/dicom',
+      },
+      :active => 'DICOM Listing',
+    },
     :categories => DICOM_CATEGORIES,
     :cryptographic_hashes => examinations.map { |e| e[1] },
     :examinations => examinations.map { |e| DICOM_CATEGORIES.map { |k| e[0][k] } },
@@ -57,7 +63,7 @@ get '/dicom/:cryptographic_hash' do
     if examination
       data = examination.to_hash
       
-      [data, data_uri(examination)]
+      [data, data_uri(cryptographic_hash)]
     else
       [nil, nil]
     end
@@ -65,7 +71,13 @@ get '/dicom/:cryptographic_hash' do
 
   erb :dicom_file, :locals => {
     :title  => 'DICOM Listing',
-    :bootstrap => {:navbar => true},
+    :navbar => {
+      :links => {
+        'Start' => '/',
+        'DICOM Listing' => '/dicom',
+      },
+      :active => params[:cryptographic_hash],
+    },
     :image => file.first.last,
     :metadata => JSON.pretty_generate(file.first.first),
   }

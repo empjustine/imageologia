@@ -33,7 +33,6 @@ get '/debug/request' do
 
   erb :dicom_file, :locals => {
     :title  => 'DEBUG',
-    :bootstrap => {:navbar => true},
     :image => nil,
     :metadata => JSON.pretty_generate(obj),
   }

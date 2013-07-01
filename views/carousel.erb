@@ -1,0 +1,42 @@
+    <style>
+      .carousel .item {
+        -webkit-transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -ms-transition: opacity 1s;
+        -o-transition: opacity 1s;
+        transition: opacity 1s;
+      }
+
+      .carousel .active.left {
+        left: 0;
+        opacity: 0;
+        z-index: 2;
+      }
+
+      .carousel .next {
+        left: 0;
+        opacity: 1;
+        z-index: 1;
+      }
+
+      .carousel img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+
+    <div id="<%= id %>" class="carousel slide" data-interval="2000">
+      <ol class="carousel-indicators"><% images.each_index do |index| %>
+        <li data-target="#<%= id %>" data-slide-to="<%= index %>"<% if index == 0 %> class="active"><% end %></li>
+      <% end %></ol>
+
+      <!-- Carousel items -->
+      <div class="carousel-inner"><% images.each_with_index do |image, index| %>
+        <div class="<% if index == 0 %>active <% end %>item"><%= image %></div>
+      <% end %></div>
+      <!-- Carousel nav -->
+
+      <a class="carousel-control left" href="#<%= id %>" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#<%= id %>" data-slide="next">&rsaquo;</a>
+    </div>
