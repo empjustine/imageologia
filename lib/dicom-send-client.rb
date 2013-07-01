@@ -6,21 +6,20 @@ require 'dicom'
 # ============
 
 
-host = ARGV[0]
-examination = ARGV[1]
 if ARGV[0][/dicom_client\.rb/]
-  host = ARGV[2]
-  examination = ARGV[3]
+  ARGV.shift
+  ARGV.shift
 end
+host = ARGV.shift
+ARGV.each do |examination|
 
-dicom_node = DICOM::DClient.new(host, 11112)
+  examination_object = DICOM::DObject.read(examination)
+  unless examination_object.read?
+    puts "Invalid DICOM @ #{examination}"
+    next
+  end
 
-dicom_node.test
-
-examination_dcm = DICOM::DObject.read(examination)
-if examination_dcm.read?
-  # Sends one or more DICOM files to a service class provider (SCP/PACS)
+  dicom_node = DICOM::DClient.new(host, 11112)
+  #dicom_node.test
   dicom_node.send(examination)
-else
-  puts "Invalid DICOM."
 end
