@@ -13,14 +13,15 @@ require 'digest/sha2'
 
 DICOM_CATEGORIES = [
   'Acquisition Date',
-  'Instance Creation Time',
+  #'Instance Creation Time',
   'Modality',
   'Manufacturer',
   'Manufacturer\'s Model Name',
   #'Institutional Department Name',
-  'Patient\'s Name',
+  #'Patient\'s Name',
   'Rows',
   'Columns',
+  'Number of Frames',
   'Pixel Aspect Ratio',
   'Bits Stored',
   :data_uri,
