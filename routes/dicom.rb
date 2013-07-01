@@ -15,6 +15,7 @@ DICOM_CATEGORIES = [
   'Acquisition Date',
   #'Instance Creation Time',
   'Modality',
+  'Study Description',
   'Manufacturer',
   'Manufacturer\'s Model Name',
   #'Institutional Department Name',

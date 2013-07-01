@@ -5,11 +5,14 @@
         <% categories.each do |category| %><th>
           <%= category %>
         </th><% end %>
+        <th>Download</th>
         </tr>
         <% examinations.each_with_index do |examination, index| %><tr>
-          <% examination.each do |field| %><td><a href="/dicom/<%= cryptographic_hashes[index] %>">
+          <% examination.each_with_index do |field, col| %><td><a href="/dicom/<%= cryptographic_hashes[index] %>">
           <%= field %>
-          </a></td><% end %>
+          </a></td><% if col == (examination.size - 1) %><td>
+            <a class="btn" href="/dicom/<%= cryptographic_hashes[index] %>/file/<%= cryptographic_hashes[index] %>.dcm">Download</a>
+          </td><% end %><% end %>
         </tr><% end %>
       </table>
     </div> <!-- /container -->
