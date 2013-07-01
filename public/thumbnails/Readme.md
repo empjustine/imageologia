@@ -1,0 +1,1 @@
+This folder holds cached thunbnails for the DICOM index.

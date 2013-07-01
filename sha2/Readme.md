@@ -1,0 +1,1 @@
+This folder holds the sha2 checksums for each DICOM file.

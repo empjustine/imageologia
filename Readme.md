@@ -5,6 +5,11 @@ Barebones simple DICOM compliant PACS server.
 
 -----
 
+Default username: 1
+Default password: 1
+
+-----
+
 Deploy picopacs
 ---------------
 

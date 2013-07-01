@@ -77,7 +77,7 @@ def cryptographic_hashes(opts={})
     }
   else
     return Dir[SHA2_PATH].map { |examination_link|
-      [File.readlink(examination_link), File.basename(examination_link)]
+      [File.readlink(examination_link), File.basename(examination_link)] rescue ['', '']
     }
   end
 end
